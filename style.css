@@ -1,0 +1,275 @@
+* {   padding:0; }
+
+/******************************************************************************/
+/* Parametres du body                                                         */
+/******************************************************************************/
+body
+{
+  width:100%;
+  background:#424242;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+header
+{
+  width:90%; /* Taille du header en largeur */
+  padding: 0.2em; /* Espacement entre la bordure du header et de son contenu */
+  height: 200px; /* Taille du header en hauteur */
+  display: flex;
+  flex-flow: row wrap; /* Paramétre du header en ligne avec retour à la ligne */
+  border: 5px #027ea6 solid;
+  border-radius: 20px 20px;
+  align-items: center;
+  margin: auto;
+  justify-content: space-around;
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+header div:nth-child(1)
+{
+  display:flex;
+  flex-flow: row nowrap;
+  height: 90%; /* Taille du header en hauteur */
+  width: 80%;
+  //border: 5px red solid;
+}
+header div:nth-child(1) img
+{
+  width: 100%;
+  //border: 5px red solid;
+  border-radius: 20px;
+}
+header div:nth-child(2)
+{
+  display:flex;
+  flex-flow: column nowrap;
+  height: 90%; /* Taille du header en hauteur */
+  width: 15%;
+  border-radius: 20px; 
+  align-items: center;
+  border: 5px solid #027ea6;
+}
+header div:nth-child(2) div:nth-child(1)
+{
+  display:flex;
+  flex-flow: column nowrap;
+  width:100%;
+  height: 10%; 
+  align-items: center;
+}
+header div:nth-child(2) div:nth-child(2)
+{
+  display:flex;
+  flex-flow: column nowrap;
+  width:90%;
+  height: 90%; 
+  align-items: center;
+}
+header div:nth-child(2) div:nth-child(2) img
+{
+  width:90%;
+  height: 90%; 
+  margin:auto;
+  border-radius:20px;
+}
+header div:nth-child(2) div:nth-child(3)
+{
+  display:flex;
+  flex-flow: column nowrap;
+  width:100%;
+  height: 10%; 
+  align-items: center;
+}
+header input
+{
+    width:80%;
+    text-align: center;
+    border-radius: 10px;
+    border: 5px solid black;
+}
+
+#photo
+{
+  border-radius: 20px 20px;
+}
+/******************************************************************************/
+/* Parametres de l'ul du menu                                                 */
+/******************************************************************************/
+nav
+{
+  margin: auto;
+  position: sticky;  /* Fixe le menu là ou il se trouve */
+  top: 0; /* Fixe le menu à partir de 0 */
+  width: 90%;
+  
+}
+#menu, #menu ul /* Liste */
+{
+        padding : 0; /* pas de marge intérieure */
+        margin : 0; /* ni extérieure */
+        list-style : none; /* on supprime le style par défaut de la liste */
+        line-height : 31px; /* on définit une hauteur pour chaque élément */
+        width: 100%; /* Défnit la largeur des sous menus */
+        text-align : center; /* on centre le texte qui se trouve dans la liste */
+}
+#menu /* Ensemble du menu */
+{
+        font-weight : bold; /* on met le texte en gras */
+        font-family : Arial; /* on utilise Arial, c'est plus beau ^^ */
+        font-size : 12px; /* hauteur du texte : 12 pixels */
+        border:0;
+}
+#menu a /* Contenu des listes */
+{
+        display : block; /* on change le type d'élément, les liens deviennent des balises de type block */
+        padding : 0; /* aucune marge intérieure */
+        background : #000; /* couleur de fond */
+        color : #fff; /* couleur du texte */
+        text-decoration : none; /* on supprime le style par défaut des liens (la plupart du temps = souligné) */
+        align-items: stretch;
+        width:100%;
+        border-radius: 20px 20px;
+}
+#menu li /* Éléments des listes */
+{
+        /* pour IE qui ne reconnaît pas "transparent" */
+        border-right : 1px solid #fff; /* on met une bordure blanche à droite de chaque élément */
+}
+/* IE ne reconnaissant pas le sélecteur ">" */
+html>body #menu li
+{
+        border-right: 1px solid transparent ; /* on met une bordure transparente à droite de chaque élément */
+}
+#menu li ul /* Sous-listes */
+{
+        position: absolute; /* Position absolue */
+        left: -999em; /* Hop, on envoie loin du champ de vision */
+}
+#menu a:hover /* Lorsque la souris passe sur un des liens */
+{
+        color: #000; /* On passe le texte en noir... */
+        background: #fff; /* ... et au contraire, le fond en blanc */
+}
+sfHover = function()
+{
+        var sfEls = document.getElementById("menu").getElementsByTagName("LI");
+        for (var i=0; i<sfEls.length; i++)
+        {
+                sfEls[i].onmouseover=function()
+                {
+                        this.className+=" sfhover";
+                }
+                sfEls[i].onmouseout = function()
+                {
+                        this.className=this.className.replace(new RegExp(" sfhover\\b"), "");
+                }
+        }
+}
+/* Partie java pour le menu déroulant */
+if (window.attachEvent) { window.attachEvent("onload", sfHover) };
+
+#menu li:hover ul ul, #menu li.sfhover ul ul /* Sous-sous-listes lorsque la souris passe sur un élément de liste */
+{
+        left: -999em; /* On expédie les sous-sous-listes hors du champ de vision */
+}
+
+#menu li:hover ul, #menu li li:hover ul, #menu li.sfhover ul, #menu li li.sfhover ul  /* Sous-listes lorsque la souris passe sur un élément de liste ET sous-sous-lites lorsque la souris passe sur un élément de sous-liste */
+{
+        left: auto; /* Repositionnement normal */
+        min-height: 0; /* Corrige un bug sous IE */
+}
+        
+main
+{
+    width: 90%;
+    border-radius: 20px;
+    margin:auto;
+    margin-top: 5px;
+    border: 5px  #027ea6 solid;
+    text-align: center;
+}
+#mep
+{
+    width: 90 %;
+    color: black;
+}
+#principal
+{
+    display:flex;
+    flex-flow: column nowrap;
+    //border: 3px solid green;
+    background-color:#BDBDBD;
+    width: 90%;
+    padding:5px;
+    margin:auto;
+    margin-top:10px;
+    margin-bottom:10px;
+    border-radius:10px;
+}
+#bloc1
+{
+    width:99%;
+    //border: 3px solid orange;
+    margin:auto;
+    border-radius:10px;
+    margin-bottom:5px;
+    background-color: white;
+}
+#bloc2
+{
+    display:flex;
+    flex-flow: row nowrap; 
+    width:99%;
+    //border: 3px solid red;
+    justify-content: space-around;
+    margin:auto;
+    border-radius:10px;
+}
+#bloc3
+{  
+    width:30%;  
+    height:300px;
+    //border: 3px solid blue;  
+    border-radius:10px;
+    padding-top:5px;
+    background-color: white;
+}
+#bloc4
+{  
+    display:flex;
+    flex-flow: column nowrap;
+    width:69%; 
+    //border: 3px solid grey;  
+    border-radius:10px;    
+}
+#bloc5
+{  
+    width:99%; 
+    height:79%;
+    //border: 3px solid purple;  
+    margin:auto;
+    border-radius:10px;
+    background-color: white;
+}
+#bloc6
+{  
+    display:flex;
+    flex-flow:row nowrap;    
+    //border: 3px solid ;  
+    width:99%;
+    height:20%;
+    justify-content: space-around;   
+    margin:auto;
+    border-radius:10px;
+}
+.bloc7
+{
+    width:33%;
+    //border: 3px solid #142;
+    border-radius:10px;
+    background-color: white;
+}
+textarea {
+  width: 300px;
+  height: 150px;
+}
